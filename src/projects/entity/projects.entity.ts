@@ -1,4 +1,4 @@
-import { Prop, Schema } from '@nestjs/mongoose';
+import {Prop, Schema, SchemaFactory} from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
 @Schema()
@@ -24,3 +24,6 @@ export class Projects extends Document {
   @Prop({ required: true })
   endDate: Date;
 }
+
+export type ProjectsDocument = Projects;
+export const ProjectsSchema = SchemaFactory.createForClass(Projects);
