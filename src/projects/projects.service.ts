@@ -31,4 +31,12 @@ export class ProjectsService {
     return projects;
   }
 
+  async deleteProject(userId: string, projectId: string): Promise<{ message: string }> {
+    const deletedProject = await this.ProjectsModel.findOneAndDelete({ userId: userId, _id: projectId });
+    if (!deletedProject) {
+      throw new Error('PROJECT NOT FOUND OR NOT AUTHORIZED TO DELETE');
+    }
+    return { message: 'Project Deleted Successfully'};
+  }
+
 }

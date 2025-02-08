@@ -30,4 +30,17 @@ export class ProjectsController {
       return this.projectsService.getProjectsByUser(userId);
   }
 
+  @MessagePattern({ cmd: 'deleteProject' })
+    async deleteProject(@Payload() data: any) {
+      const { token, projectId } = data;
+      if(!token) {
+          throw new UnauthorizedException('TOKEN IS MESSING')
+      }
+      if(!projectId) {
+          throw new Error('PROJECT ID IS REQUIRED')
+      }
+      const userId = await this.projectsService.verifyToken(token);
+      return this.projectsService.deleteProject(userId, projectId)
+  }
+
 }
