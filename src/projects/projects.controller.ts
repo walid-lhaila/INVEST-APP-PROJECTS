@@ -19,4 +19,15 @@ export class ProjectsController {
     };
     return this.projectsService.createProjects(projectData);
   }
+
+  @MessagePattern({ cmd: 'getProjects' })
+  async getProjectsByUser(@Payload() data: any) {
+      const { token } = data;
+      if(!token) {
+          throw new UnauthorizedException('TOKEN IS MESSING');
+      }
+      const userId = await this.projectsService.verifyToken(token);
+      return this.projectsService.getProjectsByUser(userId);
+  }
+
 }

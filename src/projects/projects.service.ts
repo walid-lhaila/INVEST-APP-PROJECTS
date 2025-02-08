@@ -26,4 +26,9 @@ export class ProjectsService {
     return createProjects.save();
   }
 
+  async getProjectsByUser(userId: string): Promise<ProjectsDocument[]> {
+    const projects = this.ProjectsModel.find({ userId: userId }).exec();
+    return projects;
+  }
+
 }
