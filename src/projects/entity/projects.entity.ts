@@ -4,7 +4,7 @@ import { Document } from 'mongoose';
 @Schema()
 export class Projects extends Document {
   @Prop({ required: true })
-  userId: string;
+  username: string;
 
   @Prop({ required: true })
   title: string;
