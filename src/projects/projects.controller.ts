@@ -34,6 +34,14 @@ export class ProjectsController {
     return this.projectsService.getProjectsByUsername(username);
   }
 
+  @MessagePattern({ cmd: 'getProjectByUsernameParam' })
+  async getProjectByUsernameParam(@Payload() username: string) {
+    if (!username) {
+      throw new NotFoundException('USERNAME IS MISSING');
+    }
+    return this.projectsService.getProjectsByUsername(username);
+  }
+
   @MessagePattern({ cmd: 'deleteProject' })
   async deleteProject(@Payload() data: any) {
     const { token, projectId } = data;
