@@ -11,11 +11,11 @@ async function bootstrap() {
       transport: Transport.TCP,
       options: {
         host: '0.0.0.0',
-        port: 4000,
+        port: 3007,
       },
     },
   );
   await app.listen();
-  console.log('PROJECTS SERVICE is running on: http://localhost:4000');
+  console.log('PROJECTS SERVICE is running on: http://localhost:3007');
 }
 bootstrap();
