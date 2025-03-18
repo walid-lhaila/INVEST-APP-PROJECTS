@@ -3,12 +3,8 @@ name: CI/CD Pipeline for Projects Service
 on:
   push:
     branches: [ main ]
-    paths:
-      - 'projects/**'
   pull_request:
     branches: [ main ]
-    paths:
-      - 'projects/**'
 
 jobs:
   build-and-test:
